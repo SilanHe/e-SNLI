@@ -95,7 +95,7 @@ def truncate_sent(sentence_file, max_tokens):
 
 	f.close()
 	preproc_sent_f.close()
-	print "count truncated ", count_truncated
+	print("count truncated ", count_truncated)
 
 
 def compute_frequences(expl_files):
@@ -121,7 +121,7 @@ def words_less_k(word_frequences, k):
 	for w, freq in word_frequences.iteritems():
 		if freq < k:
 			infreq_words.append(w)
-	print "number of infreq_words ", len(infreq_words)
+	print("number of infreq_words ", len(infreq_words))
 	return infreq_words
 
 
@@ -164,11 +164,11 @@ def replace_infreq(expl_file, word_frequences, k):
 
 	f.close()
 	preproc_expl_f.close()
-	print "words_UNK ", words_UNK
-	print "total_words ", total_words
-	print "total distinct words ", len(distinct_words)
-	print "replaced_UNK ", replaced_UNK
-	print "number of distinct words infrequent ", len(words_UNK)
+	print("words_UNK ", words_UNK)
+	print("total_words ", total_words)
+	print("total distinct words ", len(distinct_words))
+	print("replaced_UNK ", replaced_UNK)
+	print("number of distinct words infrequent ", len(words_UNK))
 	return total_words, replaced_UNK, words_UNK, distinct_words
 
 
@@ -203,7 +203,7 @@ def concat_files(list_files, out_file):
 			count += 1
 		f.close()
 	g.close()
-	print "total lines for ", out_file, count
+	print("total lines for ", out_file, count)
 
 
 def prepend_label_expl(label_file, expl_file):
@@ -223,7 +223,7 @@ def prepend_label_expl(label_file, expl_file):
 		g.write(final_line + "\n")
 		count += 1
 
-	print count
+	print(count)
 
 	g.close()
 	label_f.close()
@@ -247,7 +247,7 @@ def append_label_expl(label_file, expl_file):
 		g.write(final_line + "\n")
 		count += 1
 
-	print count
+	print(count)
 
 	g.close()
 	label_f.close()
@@ -296,10 +296,10 @@ sentence_lenghts("eSNLI/expl_to_inp/attention_nips/s2.train")
 sentence_lenghts("eSNLI/expl_to_inp/attention_nips/expl.train")
 '''
 
-word_frequences = compute_frequences(["eSNLI/expl_to_inp/eSNLI/s2.train"])
-replace_infreq("eSNLI/expl_to_inp/eSNLI/s2.train", word_frequences, k=10)
-replace_infreq("eSNLI/expl_to_inp/eSNLI/s2.dev", word_frequences, k=10)
-replace_infreq("eSNLI/expl_to_inp/eSNLI/s2.test", word_frequences, k=10)
+word_frequences = compute_frequences(["dataset/eSNLI/expl_to_inp/eSNLI/s2.train"])
+replace_infreq("dataset/eSNLI/expl_to_inp/eSNLI/s2.train", word_frequences, k=10)
+replace_infreq("dataset/eSNLI/expl_to_inp/eSNLI/s2.dev", word_frequences, k=10)
+replace_infreq("dataset/eSNLI/expl_to_inp/eSNLI/s2.test", word_frequences, k=10)
 
 
 #word_frequences = compute_frequences(["eSNLI/expl_to_inp/attention_nips/s2.train"])
